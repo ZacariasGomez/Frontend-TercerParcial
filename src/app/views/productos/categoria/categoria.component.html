@@ -1,0 +1,48 @@
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>FORMULARIO DE CATEGORIAS</strong>
+      </c-card-header>
+      <c-card-body>
+          <form cForm>
+            <div class="mb-3">
+              <label cLabel for="nombre">NOMBRE</label>
+              <input cFormControl
+                     id="nombre"
+                     placeholder ="ingrese nombre categoria"
+                     [(ngModel)] = "categoriaModelo.nombre"
+                     type="text"
+                     name="nombre"
+              />
+            </div>
+            <button (click)="guardarCategoria()" cButton class="me-1" color="primary" type="submit">
+              Guardar
+            </button>
+          </form>
+      </c-card-body>
+    </c-card>
+  </c-col>
+  <c-col xs="12">
+    <table cTable>
+      <thead>
+      <tr>
+        <th scope="col">ITEMS</th>
+        <th scope="col">NOMBRE</th>
+        <th scope="col">ACCIONES</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+          <tr *ngFor="let categoria of listaCategorias; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{categoria.nombre}}</td>   
+            <td>
+              <button cButton color="warning" variant="outline" (click)="verCategoria(categoria)">Editar</button>
+              <button (click)="eliminarCategoria(categoria)" cButton color="danger" variant="outline">Eliminar</button></td>
+          </tr>
+        
+      </tbody>
+    </table>
+  </c-col>
+</c-row>

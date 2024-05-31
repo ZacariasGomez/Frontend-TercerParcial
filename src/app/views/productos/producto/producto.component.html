@@ -1,0 +1,98 @@
+<c-row ngPreserveWhitespaces>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header>
+          <strong>FORMULARIO DE PRODUCTOS</strong>
+        </c-card-header>
+        <c-card-body>
+            <form cForm>
+              <div class="mb-3">
+                <label cLabel for="nombre">NOMBRE</label>
+                <input cFormControl
+                       id="nombre"
+                       placeholder ="ingrese nombre"
+                       [(ngModel)] = "productoModelo.nombre"
+                       type="text"
+                       name="nombre"
+                />
+              </div>
+              <div class="mb-3">
+                <label cLabel for="marca">MARCA</label>
+                <input cFormControl
+                       id="marca"
+                       placeholder="ingrese marca"
+                       type="text"
+                       name="marca"
+                       [(ngModel)] = "productoModelo.marca"
+                />
+              </div>
+              <div class="mb-3">
+                <label cLabel for="descripcion">DESCRIPCION</label>
+                <input cFormControl
+                       id="descripcion"
+                       placeholder="ingrese descripcion"
+                       type="text"
+                       name="descripcion"
+                       [(ngModel)] = "productoModelo.descripcion"
+  
+                />
+              </div>
+              <div class="mb-3">
+                <label cLabel for="cantidad">CANTIDAD</label>
+                <input cFormControl
+                       id="cantidad"
+                       placeholder="ingrese la cantidad"
+                       type="number"
+                       name="cantidad"
+                       [(ngModel)] = "productoModelo.cantidad"
+  
+                />
+              </div>
+              <div class="mb-3">
+                <label cLabel for="categoria">CATEGORIA</label>
+                <select cFormControl
+          id="categoria"
+          name="categoria"
+          [(ngModel)]="productoModelo.categoria">
+    <option *ngFor="let categoria of listaCategorias" [value]="categoria._id">
+      {{ categoria.nombre }}
+    </option>
+  </select>
+
+              </div>
+              <button (click)="guardarProducto()" cButton class="me-1" color="primary" type="submit">
+                Guardar
+              </button>
+            </form>
+        </c-card-body>
+      </c-card>
+    </c-col>
+    <c-col xs="12">
+      <table cTable>
+        <thead>
+        <tr>
+          <th scope="col">ITEMS</th>
+          
+          <th scope="col">NOMBRE</th>
+          <th scope="col">MARCA</th>
+          <th scope="col">DESCRIPCION</th>
+          <th scope="col">CANTIDAD</th>
+          <th scope="col">ACCIONES</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let producto of listaProductos; let i = index">
+              <th scope="row">{{ i + 1 }}</th>
+            
+              <td>{{producto.nombre}}</td>
+              <td>{{producto.marca}}</td>
+              <td>{{producto.descripcion}}</td>
+              <td>{{producto.cantidad}}</td>
+              <td>
+                <button cButton color="warning" variant="outline" (click)="verProducto(producto)">Editar</button>
+                <button (click)="eliminarProducto(producto)" cButton color="danger" variant="outline">Eliminar</button></td>
+            </tr>
+        </tbody>
+      </table>
+    </c-col> 
+  </c-row>

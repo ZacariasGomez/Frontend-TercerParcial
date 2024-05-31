@@ -1,0 +1,60 @@
+<c-row ngPreserveWhitespaces>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header>
+          <strong>PRODUCTOS POR CATEGORIA</strong>
+        </c-card-header>
+        <c-card-body>
+          <label cLabel for="nombre">FILTRAR: </label>
+          <input type="text" id="filterInput" placeholder=" ingrese la categoría..." (keyup)="getProductosCategoria()">
+          <table cTable>
+            <thead>
+            <tr>
+              <th scope="col">ITEMS</th>
+              <th scope="col">CATEGORIA</th>
+              <th scope="col">NOMBRE</th>
+              <th scope="col">MARCA</th>
+              <th scope="col">DESCRIPCION</th>
+              <th scope="col">CANTIDAD</th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let producto of listaProductos ; let i = index">
+                <th scope="row">{{i + 1}}</th>
+              <td>{{producto.categoria.nombre}}</td>
+              <td>{{producto.nombre}}</td>
+              <td>{{producto.marca}}</td>
+              <td>{{producto.descripcion}}</td>
+              <td>{{producto.cantidad}}</td>
+             </tr>
+            </tbody>
+          </table>
+        </c-card-body>
+      </c-card>
+   <!--    <c-card class="mb-4">
+        <c-card-header>
+          <strong>Reporte de recetas 2</strong>
+        </c-card-header>
+        <c-card-body>
+          <table cTable>
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Usuario</th>
+              <th scope="col">Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td><button cButton color="warning" variant="outline">Editar</button> <button cButton color="danger" variant="outline">Eliminar</button></td>
+            </tr>
+            </tbody>
+          </table>
+        </c-card-body>
+      </c-card> -->
+    </c-col>
+  </c-row>
